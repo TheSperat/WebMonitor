@@ -3,6 +3,7 @@ from logger import Logger
 import urllib.request
 from time import time
 
+
 """
 Class which is responsible for performing operations connected with site status management.
 """

@@ -2,7 +2,7 @@ import logging
 
 
 class Logger:
-    #Log format
+    # Log format
     FORMAT = '%(asctime)-15s  %(message)s'
 
     def __init__(self):

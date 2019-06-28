@@ -12,7 +12,6 @@ scrap_operator = ScrapOperator(CONTENT_REQUIREMENTS.keys())
 A function which is responsible of looping through all sites saved in CONFIG file
 and checking if elements specified in this file are met
 '''
-
 def thread_function():
     while True:
         for key, value in CONTENT_REQUIREMENTS.items():
@@ -35,7 +34,6 @@ app = Flask(__name__)
 '''
 Basic flask implementation
 '''
-
 @app.route("/")
 def index():
 
