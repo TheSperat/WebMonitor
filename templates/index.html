@@ -1,11 +1,19 @@
 <html>
     <head>
-        <title>Python is awesome!</title>
+        <title>Status</title>
+        <link rel="stylesheet" href="/static/styles/style.css">
     </head>
     <body>
-        <h1>Web sites status</h1>
+        <h1>{{ title }}</h1>
         {% for key, value in sites.items() %}
-            <li> {{ key }} and {{ value }}</li>
+        <div>
+            <span>{{ key }} </span>
+            {% if value == "OK" %}
+                <span style="color: green">{{ value }}</span>
+            {% else %}
+                <span style="color: red"> {{ value }}</span>
+            {% endif %}
+        </div>
         {% endfor %}
     </body>
 </html>
