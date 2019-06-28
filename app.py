@@ -2,8 +2,8 @@ from flask import Flask, render_template
 import time
 import sys
 import _thread
-from CONFIG import CONTENT_REQUIREMENTS, REFRESH_RATE
-from scrap_handler import ScrapOperator
+from components.CONFIG import CONTENT_REQUIREMENTS, REFRESH_RATE
+from components.scrap_handler import ScrapOperator
 
 
 scrap_operator = ScrapOperator(CONTENT_REQUIREMENTS.keys())

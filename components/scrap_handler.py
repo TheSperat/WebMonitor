@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from logger import Logger
+from components.logger import Logger
 import urllib.request
 from time import time
 
