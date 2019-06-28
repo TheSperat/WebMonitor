@@ -77,7 +77,7 @@ class ScrapOperator(Logger):
         else:
             calculated_time = self.calculate_time(ScrapOperator.START, ScrapOperator.END)
 
-        # {site url} {result of checking operataion} {time}
+        # {site url} {result of checking operation} {time}
         return "{} {} {}".format(
             ScrapOperator.URL,
             result,

@@ -44,4 +44,4 @@ def index():
 
 if __name__ == "__main__":
     _thread.start_new_thread(thread_function, ())
-    app.run(debug=True)
+    app.run(debug=False)

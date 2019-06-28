@@ -19,5 +19,5 @@ CONTENT_REQUIREMENTS = {
     "https://aryaboudaie.com/python/technical/educational/web/flask/2018/10/17/flask.html": ("text", "", "Terefere"),
     "https://dzone.com/articles/python-flask-generating-a-static-html-page": ("li", "class", "rss-icon"),
     "https://pl.simplesite.com/pages/service-login.aspx": ("a", "href", "//pl.simplesite.com/go/cms/features/features"),
-    "https://www.onet.pl/": {"h1", "class", "onetLogo"}
+    "https://www.interia.pl/": ("a", "class", "header-a")
 }
