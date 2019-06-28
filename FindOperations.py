@@ -1,39 +1,48 @@
 from bs4 import BeautifulSoup
+from logger import Logger
 import urllib.request
 from time import time
-import logging
-import http.server
-import socketserver
 
 
-class FindOperations:
-    start = None
-    end = None
-    url = None
-    logging.basicConfig(level=logging.INFO)
-    log_operator = logging.getLogger(__name__)
-    log_operator.setLevel(logging.INFO)
-    handler = logging.FileHandler('hello.log')
-    handler.setLevel(logging.INFO)
-    log_operator.addHandler(handler)
+class FindOperations(Logger):
+    START = None
+    END = None
+    URL = None
 
+    def __init__(self):
+        super().__init__()
+        self.log_setup()
+        self.site_status = {}
+
+
+    def calculate_time(self, start, end):
+        return end - start
+
+    def build_log_message(self, result, error=False):
+        if error:
+            calculated_time = "Site error"
+        else:
+            calculated_time = self.calculate_time(FindOperations.START, FindOperations.END)
+
+        return "{} {} {}".format(
+            FindOperations.URL,
+            result,
+            calculated_time)
 
     def load_site(self, url):
-        print("Tu musi być info!!!!")
-        FindOperations.url = url
+        FindOperations.URL = url
         return urllib.request.urlopen(url).read()
 
     def parse_site(self, site):
-        FindOperations.start = time()
+        FindOperations.START = time()
         data = BeautifulSoup(site, 'html.parser')
-        FindOperations.end = time()
+        FindOperations.END = time()
         return data
 
 
     def find_element(self, tuple_data, info):
         element, el_type, key = tuple_data
         # print(info)
-
         print(element, key)
         if element == "text":
             return info.body.find_all(text=key)
@@ -43,9 +52,17 @@ class FindOperations:
     def check_condition(self, element):
         if not element:
             result = "Element NOT found!"
+            status = "ERROR"
         else:
             result = "Element found"
+            status = "OK"
 
-        builder = "{} {} {}".format(FindOperations.url, result, FindOperations.end - FindOperations.start)
-        FindOperations.log_operator.info(builder)
+        self.status_generator(status)
+        message = self.build_log_message(result)
+        self.log_operator.info(message)
+
+
+    def status_generator(self, status):
+        self.site_status[FindOperations.URL] = status
+
 

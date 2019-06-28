@@ -1,9 +1,26 @@
-import http.server
-import socketserver
+from flask import render_template
+import flask
 
-PORT = 8080
-Handler = http.server.SimpleHTTPRequestHandler
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("serving at port", PORT)
-    httpd.serve_forever()
+class WebSiteOperator:
+    def __init__(self, websites):
+        self.websites = websites
+        self.create_dictionary()
+        self.app = flask.Flask('my app')
+
+    def create_dictionary(self):
+        self.items = {web: "UNKNOWN" for web in self.websites}
+
+        print(self.items)
+
+    def set_status(self, info):
+        self.items = info
+
+    def run_app(self):
+        with self.app.app_context():
+            rendered = render_template('index.html',
+                                       title="My Generated Page",
+                                       sites=self.items)
+
+
+

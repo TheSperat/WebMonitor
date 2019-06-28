@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Python is awesome!</title>
+    </head>
+    <body>
+        <h1>Web sites status</h1>
+        {% for key, value in sites.items() %}
+            <li> {{ key }} and {{ value }}</li>
+        {% endfor %}
+    </body>
+</html>
